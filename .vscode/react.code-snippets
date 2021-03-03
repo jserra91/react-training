@@ -27,4 +27,106 @@
 		],
 		"description": "Component template"
 	},
+	"Create Container": {
+		"prefix": "react-container",
+		"body": [
+			"import { connect } from 'react-redux';",
+			"import { IState } from '../Model/IState';",
+			"import DashboardPage from '../Pages/DashboardPage';",
+			"",
+			"const mapStateToProps = (state: IState) => {",
+			"return {}",
+			"}",
+			"",
+			"const mapDispatchToProps = (dispatch: any) => {",
+			"return {}",
+			"}",
+			"",
+			"export default connect(mapStateToProps, mapDispatchToProps)(DashboardPage);"
+		],
+		"description": "Component template"
+	},
+	"Create State": {
+		"prefix": "react-state",
+		"body": [
+			"export interface IState { }"
+		],
+		"description": "State template"
+	},
+	"Create SessionStorage": {
+		"prefix": "react-sessionStorage",
+		"body": [
+			"import * as Redux from 'redux';",
+			"export const sessionStorage: Redux.Middleware = (store: any) => (next: any) => (action: any) => {",
+			"next(action);",
+			"window.sessionStorage.setItem($0, JSON.stringify(store.getState()));",
+			"}"
+		],
+		"description": "Component template"
+	},
+	"Create Page": {
+		"prefix": "react-page",
+		"body": [
+			"import React from 'react';",
+			"export interface $0 { }",
+			"",
+			"const $1 = (props: $0) => {",
+			"return (<></>)",
+			"}",
+			"export default $1;"
+		],
+		"description": "Page template"
+	},
+	"Create App": {
+		"prefix": "react-page",
+		"body": [
+			"import { sessionStorage } from './Middleware/session-storage';",
+			"import { createStore, applyMiddleware } from 'redux';",
+			"import { reducer } from './Reducers/reducer';",
+			"import { Provider } from 'react-redux';",
+			"import thunkMiddleware from 'redux-thunk';",
+			"import { composeWithDevTools } from 'redux-devtools-extension';",
+			"import logger from 'redux-logger';",
+			"import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';",
+			,
+			"import DashboardPage from './Pages/DashboardPage';",
+			"import React from 'react';",
+			"",
+			"const GetInitialState = (): any => window.sessionStorage.getItem($0);",
+			"",
+			"const Initialize = (): [any] => {",
+			"const initialState = GetInitialState();",
+			"return [initialState ? JSON.parse(initialState) : {}];",
+			"}",
+			"",
+			"function App() {",
+			"const [initialState] = Initialize();",
+			"let store = createStore(reducer, initialState, composeWithDevTools(applyMiddleware(thunkMiddleware, logger, sessionStorage)));",
+			"",
+			"return (",
+			"<Provider store={store}>",
+			"<Router>",
+			"<Switch>",
+			"<Route path="/" exact> <DashboardPage /> </Route>",
+			"</Switch>",
+			"</Router>",
+			"</Provider>",
+			");",
+			"}",
+			"",
+			"export default App;"
+		],
+		"description": "App template"
+	},
+	"Create Reducer": {
+		"prefix": "react-reducer",
+		"body": [
+			"export const reducer = (state: any, action: any) => {",
+			"return state;",
+			"}",
+			"",
+			"export default reducer;"
+		],
+		"description": "Reducer template"
+	},
 }
