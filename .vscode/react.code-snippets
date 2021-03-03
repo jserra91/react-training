@@ -1,0 +1,30 @@
+{
+	"Create component": {
+		"prefix": "react-component",
+		"body": [
+			"import * as React from 'react';",
+			"import { css } from 'emotion';",
+			"",
+			"export interface $0 {",
+			"id?: string | number;",
+			"onClick?(): void;",
+			"}",
+			"",
+			"export const $1: React.FC<$0> = (props: $0) => {",
+			"",
+			"const [id, setId] = React.useState(props.id);",
+			"",
+			"React.useEffect(() => {}, [props.id])",
+			"",
+			"return (",
+			"<>",
+			"</>",
+			");",
+			"",
+			"}",
+			"",
+			"export default $1;"
+		],
+		"description": "Component template"
+	}
+}
