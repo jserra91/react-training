@@ -26,5 +26,5 @@
 			"export default $1;"
 		],
 		"description": "Component template"
-	}
+	},
 }
